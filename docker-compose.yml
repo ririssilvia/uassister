@@ -1,0 +1,19 @@
+version: '2.3'
+services:
+  php-apache-environment:
+    image: riris/Uas
+    container_name: php-apache
+    volumes:
+      - ./php/src:/var/www/html/
+    ports:
+      - 8080:80
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend-network
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24
